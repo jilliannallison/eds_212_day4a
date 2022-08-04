@@ -1,0 +1,38 @@
+---
+title: "Leslie Matrix Example"
+author: "Jillian Allison"
+format: html
+editor: visual
+---
+
+#### Leslie Matrix Example
+
+Model population changes using the same example we did in lecture.
+
+```{r}
+# creating vectors and matrices to represent the system of equations 
+insect_leslie <- matrix(c(0, 0, 600, 0.2, 0, 0, 0, 0.8, 0),
+                        nrow = 3, ncol = 3, byrow = TRUE)
+
+insect_leslie
+```
+
+```{r}
+# Creating initial conditions vector  (eggs, larvae, adult females)
+insect_y0 <- c(12000, 700, 500)
+```
+
+```{r}
+# year 1
+insect_y1 <- insect_leslie %*% insect_y0 # use dot prod operator
+```
+
+Estimate populations at each life stage at year 2 and year 3! 
+
+```{r}
+# year 2
+insect_y2 <- insect_leslie %*% insect_y1
+# year 3 
+insect_y3 <- insect_leslie %*% insect_y2 
+```
+
